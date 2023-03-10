@@ -9,7 +9,6 @@ function NineBox() {
   const [isGameRunning, setIsGameRunning] = useState(true);
 
   useEffect(() => {
-    // Create 9 boxes
     const boxesArray = [];
     for (let i = 0; i < 9; i++) {
       boxesArray.push({ id: i, hit: false });
@@ -18,16 +17,13 @@ function NineBox() {
   }, []);
 
   useEffect(() => {
-    // Randomly select one box to be the HIT box
     const randomHitBox = Math.floor(Math.random() * 9);
     setHitBox(randomHitBox);
 
-    // Display the HIT box for 1 second
     const timer = setTimeout(() => {
       setHitBox(null);
     }, 1000);
 
-    // Clean up the timer when the HIT box changes or the game ends
     return () => clearTimeout(timer);
   }, [score, timeLeft]);
 
@@ -40,13 +36,11 @@ function NineBox() {
   };
 
   useEffect(() => {
-    // Count down the time for 1 minute
     if (timeLeft > 0) {
       const timer = setTimeout(() => {
         setTimeLeft(timeLeft - 1);
       }, 1000);
 
-      // Clean up the timer when the game ends
       return () => clearTimeout(timer);
     } else {
       setIsGameRunning(false);
