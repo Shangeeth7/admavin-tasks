@@ -1,0 +1,10 @@
+.square-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.square {
+  position: absolute;
+  border: 2px solid black;
+}
